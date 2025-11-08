@@ -1,65 +1,85 @@
-import Image from "next/image";
+"use client";
+
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import RoleSelection from "@/components/RoleSelection";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { isLoaded, user } = useUser();
+  const router = useRouter();
+
+  // User role redirect logic is unchanged
+  useEffect(() => {
+    if (isLoaded && user) {
+      const role = user.publicMetadata?.role;
+      if (role === "patient") router.push("/patient");
+      if (role === "doctor") router.push("/doctor");
+    }
+  }, [isLoaded, user, router]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className="min-h-screen w-full relative flex flex-col items-center justify-center p-4 overflow-hidden bg-black">
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ filter: "brightness(0.3)" }}
+        >
+          <source src="/bg.webm" type="video/webm" />
+          <source src="/bg.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Main Content Container */}
+      <div className="relative z-20 w-full max-w-6xl">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <div className="mb-6">
+            {/* ✅ THEME: Changed gray to zinc */}
+            <span className="inline-block px-6 py-3 rounded-full bg-zinc-900 text-emerald-400 text-sm font-medium shadow-neubrutalism">
+              ✨ Next-Generation Healthcare Platform
+            </span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            Next-Gen Healthcare
+            <br />
+            <span className="bg-gradient-to-r from-emerald-400 to-emerald-500 bg-clip-text text-transparent">
+              at Your Fingertips
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          {/* ✅ THEME: Changed gray to zinc */}
+          <p className="text-xl md:text-2xl text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Experience advanced medical diagnostics, personalized health scores,
+            and AI-powered consultations—all in one revolutionary application.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* ✅ THEME: Changed gray to zinc */}
+        <div className="bg-zinc-900 rounded-2xl p-8 shadow-neubrutalism-lg border border-zinc-800">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Choose Your <span className="text-emerald-400">Role</span>
+            </h2>
+            <p className="text-zinc-400">
+              Select how you'd like to access our healthcare platform
+            </p>
+          </div>
+          <RoleSelection />
         </div>
-      </main>
+      </div>
+
+      {/* Floating elements */}
+      <div className="absolute top-20 left-10 w-3 h-3 bg-emerald-400 rounded-full shadow-neubrutalism-sm animate-pulse z-10"></div>
+      <div className="absolute top-40 right-20 w-2 h-2 bg-emerald-300 rounded-full shadow-neubrutalism-sm animate-pulse z-10"></div>
+      <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-emerald-500 rounded-full shadow-neubrutalism-sm animate-pulse z-10"></div>
     </div>
   );
 }
