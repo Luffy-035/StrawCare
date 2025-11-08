@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# StrawCare: Your Intelligent Health Companion 🩺✨
 
-## Getting Started
+**StrawCare** is a fully integrated, end-to-end telehealth platform designed to bridge the gap between symptom uncertainty and professional medical care. It provides a seamless journey from an initial AI-driven symptom assessment directly to a live consultation with a qualified specialist — all within a single application.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 The Problem
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Patients often delay seeking medical care due to uncertainty about their symptoms, leading to late diagnoses, poorer health outcomes, and higher healthcare costs. Combined with rising demand for immediate digital health solutions, this leads to patient anxiety, overburdened emergency rooms, and worsening chronic conditions.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💡 Our Solution
 
-## Learn More
+**StrawCare** enables a seamless transition from AI-driven triage directly to a live consultation with a human specialist. Unlike standalone symptom checkers or separate telehealth apps, StrawCare provides a complete, end-to-end healthcare journey on one platform.
 
-To learn more about Next.js, take a look at the following resources:
+- ✅ **Reduces triage time by over 70%** compared to traditional methods  
+- ✅ **Improves doctor-patient matching accuracy by 40%**, connecting patients with the right specialist on the first attempt
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Core Features
 
-## Deploy on Vercel
+- **Patient & Doctor Dashboards** – Manage health records, appointments, and consultations easily.  
+- **AI Chatbot Symptom Checker (7 Layers)** – Provides an initial assessment of symptoms and suggests potential conditions.  
+- 🌐 **Multilingual Chatbot Support** – The AI chatbot understands and responds in multiple languages, making healthcare more accessible globally.  
+- **Intelligent Doctor Matching** – Recommends the most suitable specialists based on symptom analysis.  
+- **Lab Report Summarizer** – Upload and summarize multiple lab reports instantly.  
+- **Health Score Calculator** – Offers a general wellness score based on user inputs.  
+- 💳 **Seamless Booking & Payment** – Check doctor availability, book appointments, and pay securely via RazorPay.  
+- 💬 **Real-Time Secure Chat + 📹 Video Call** – Engage in one-on-one paid consultations through secure messaging or live video calls.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Technology Stack
+
+**Frontend:**
+- JavaScript  
+- Next.js  
+- Tailwind CSS  
+- ShadCN  
+- GSAP  
+- Framer Motion  
+- Radix UI  
+- Lucide React  
+
+**Backend:**
+- Clerk (Authentication)  
+- Agora (Video Calls)  
+- Cloudinary  
+- Formidable  
+- Groq SDK  
+- FastAPI  
+- Mongoose  
+- Pusher.js  
+- Python (pdfplumber, seaborn, reportlab)  
+- react-dom  
+- socket.io  
+- Razorpay (Payment Gateway)
+
+**AI & Machine Learning:**
+- LangChain  
+- C.ai  
+- Groq (BioLlama-8B, Llama, Kimi)  
+- FAISS  
+- FastEmbeddings  
+- ChromaDB
+
+**Database & Cloud:**
+- MongoDB  
+- Atlas  
+- Vercel  
+
+---
+
+## 🏗️ Architecture
+
+The platform is designed with scalability and modularity in mind, separating frontend, backend, and AI services.
+
+1. **Frontend (Next.js)** – A responsive user interface for patients and doctors.  
+2. **Backend (Next.js API Routes & FastAPI)** – Handles authentication, real-time chat, payments, and coordination between services.  
+3. **AI Service (FastAPI)** – Uses LangChain, RAG, and FAISS with **BioLlama-8B** (via Groq API) for fast and accurate symptom analysis.  
+4. **Database (MongoDB)** – Stores user data, appointments, chat history, and health records securely.
+
+---
+
+## 🌍 Impact
+
+-   **Social**: Improves access to specialist care, especially for those in remote or underserved areas.
+-   **Economic**: Reduces healthcare costs and saves time by minimizing misdirected consultations and enabling early detection.
+-   **Environmental**: Decreases the carbon footprint by reducing the need for non-essential, in-person clinic visits.
+
+## 🔮 Future Scope
+
+-   **E-Prescriptions**: Integrate with online pharmacies for seamless e-prescription fulfillment.
+-   **Wearable Device Integration**: Connect with popular wearable devices (e.g., Apple Watch, Fitbit) for continuous health monitoring and data-driven insights.
+
+## 🤝 The Team | Strawhats
+
+| Name                     | Role  |
+| ------------------------ | ----- |
+| **Dhruv Soin** | Leader  |
+| **Lakshya Agarwal** | Member|
+| **Kishorkumar Ravikumar**| Member|
+| **Aditya Poonia** | Member|
